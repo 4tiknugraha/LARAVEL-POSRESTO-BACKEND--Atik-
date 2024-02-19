@@ -38,12 +38,15 @@ class UserController extends Controller
             'password'=> 'required|min:8',
             'role'=> 'required|in:admin,staff,user',
             ]);
-            // $user = new User();
-            // $user->name = $request->name;
-            // $user->email = $request->email;
-            // $user->password = bcrypt($request->password);
-            // $user->save();
-            // return redirect()->route('')->with('success','');
+
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->role = $request->role;
+            $user->save();
+
+            return redirect()->route('users.index')->with('success','User created successfully');
 
     }
 
