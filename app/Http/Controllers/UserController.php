@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -19,11 +21,13 @@ class UserController extends Controller
         ->paginate(10);
         return view('pages.user.index', compact('users'));
     }
+
     // create
     public function create()
     {
         return view('pages.user.create');
     }
+
     // store
     public function store(Request $request)
     {
@@ -42,37 +46,51 @@ class UserController extends Controller
             // return redirect()->route('')->with('success','');
 
     }
+
     // show
     public function show($id)
     {
         return view('pages.user.show');
     }
+
     // edit
     public function edit($id)
     {
-        return view('pages.user.edit');
+        $user = User::findOrFail($id);
+        return view('pages.user.edit', compact('user'));
     }
+
     // update
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'name'=> 'required',
-            'email'=> 'required|email|unique:users,email,'. $id,
+            'email'=> 'required',
             'role'=> 'required|in:admin,staff,user',
             ]);
-            // $user = User::find($id);
-            // $user->name = $request->name;
-            // $user->email = $request->email;
-            // $user->password = <PASSWORD>($request->password);
-            // $user->save();
+
+            $user = User::find($id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->role = $request->role;
+            $user->save();
+
+            // if password is note empety
+            if ($request->input('password')) {
+                $user->password = Hash::make($request->password);
+                $user->save();
+            }
+            return redirect()->route('users.index')->with('success', 'User Created Successfully');
             // return redirect()->route('')->with('success','');
-            // return redirect()->route('user.index')->with('success','');
-            // return view('pages.user.edit');
     }
+
     // destroy
     public function destroy($id)
     {
-        //
+        // delete the requested ...
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'User Deleted Successfully');
     }
 
 }
