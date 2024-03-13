@@ -24,7 +24,7 @@ class OrderController extends Controller
             'id_kasir' =>'required',
             'nama_kasir' =>'required',
             'transaction_time' =>'required',
-            'order_items' =>'required'
+            // 'order_items' =>'required'
         ]);
         //create order
         $order = Order::create([
@@ -43,7 +43,7 @@ class OrderController extends Controller
         //create order items
         foreach ($request->order_items as $item) {
             OrderItem::create([
-                'order_id' => $item->order_id,
+                'order_id' => $order_id,
                 'product_id' => $item['product_id'],
                 'quantity' => $item['quantity'],
                 'price' => $item['price'],
