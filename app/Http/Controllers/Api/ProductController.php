@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
-
 class ProductController extends Controller
 {
     //index api
@@ -14,12 +13,12 @@ class ProductController extends Controller
     {
         //get all products
         $products = Product::all();
-        // $products = Product::paginate(10);
-        // load category
+        //load category
         $products->load('category');
+        // $products = Product::paginate(10);
         return response()->json([
             'status' => 'success',
-            'data' => $products,
+            'data' => $products
         ], 200);
     }
 }
