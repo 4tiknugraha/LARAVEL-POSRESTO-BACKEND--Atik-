@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->integer('stock');
             $table->boolean('status')->default(1);
+            //is_favorite
             $table->boolean('is_favorite')->default(0);
             $table->timestamps();
         });
