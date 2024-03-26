@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(20)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Test Atik User',
-            'email' => 'atik@flutter.com',
+            'name' => 'Test Bahri User',
+            'email' => 'bahri@fic14.com',
             'password' => Hash::make('12345678'),
             'role' => 'admin',
         ]);

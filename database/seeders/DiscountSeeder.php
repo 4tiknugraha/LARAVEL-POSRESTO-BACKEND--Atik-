@@ -12,7 +12,6 @@ class DiscountSeeder extends Seeder
      */
     public function run(): void
     {
-        //
         //manual input
         \App\Models\Discount::create([
             'name' => 'Welcome WCB',
@@ -40,6 +39,5 @@ class DiscountSeeder extends Seeder
             'status' => 'active',
             'expired_date' => '2025-12-31'
         ]);
-
     }
 }
