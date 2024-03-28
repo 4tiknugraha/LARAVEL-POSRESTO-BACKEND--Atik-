@@ -33,7 +33,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>All Category</h4>
+                                <h4>All category</h4>
                             </div>
                             <div class="card-body">
 
@@ -55,6 +55,7 @@
                                         <tr>
 
                                             <th>Name</th>
+
                                             <th>Create At</th>
                                             <th>Action</th>
                                         </tr>
@@ -63,6 +64,7 @@
 
                                                 <td>{{ $category->name }}
                                                 </td>
+
                                                 <td>{{ $category->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">

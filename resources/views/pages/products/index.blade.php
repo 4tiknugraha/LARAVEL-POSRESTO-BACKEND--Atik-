@@ -11,7 +11,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Products</h1>
+                <h1>Product</h1>
                 <div class="section-header-button">
                     <a href="{{ route('products.create') }}" class="btn btn-primary">Add New</a>
                 </div>
@@ -36,7 +36,6 @@
                                 <h4>All Posts</h4>
                             </div>
                             <div class="card-body">
-
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('products.index') }}">
                                         <div class="input-group">
@@ -73,7 +72,7 @@
                                                     {{ $product->price }}
                                                 </td>
                                                 <td>
-                                                    {{ $product->price == 1 ? 'Active' : 'Inactive' }}
+                                                    {{ $product->status == 1 ? 'Active' : 'Inactive' }}
                                                 </td>
                                                 <td>{{ $product->created_at }}</td>
                                                 <td>

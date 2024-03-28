@@ -16,7 +16,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Advanced Forms</h1>
+                <h1>Product Forms</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
@@ -91,9 +91,12 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Category</label>
-                                <select class="form-control selectric @error('category_id') is-invalid @enderror"
+                                <select
+                                    class="form-control selectric @error('category_id')
+                                    is-invalid
+                                @enderror"
                                     name="category_id">
-                                    <option value="">Select Category</option>
+                                    <option value="">Choose Category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"
                                             {{ $category->id == $product->category_id ? 'selected' : '' }}>
@@ -101,10 +104,12 @@
                                         </option>
                                     @endforeach
                                 </select>
+
                             </div>
+
                             <div class="form-group mb-0">
                                 <label class="form-label w-100">Status</label>
-                                <div class="selectgroup selectgroup-pills ">
+                                <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
                                         <input type="radio" name="status" value="1" class="selectgroup-input"
                                             {{ $product->status == 1 ? 'checked' : '' }}>
@@ -119,15 +124,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label mt-4">Photo Product </label>
+                                <label class="form-label mt-4">Photo Product</label>
                                 <div class="col-sm-9">
                                     <input type="file" class="form-control" name="image"
                                         @error('image') is-invalid @enderror>
                                 </div>
                             </div>
-                            {{-- Is Favorite --}}
+
+                            {{-- is favorite --}}
                             <div class="form-group mt-4">
-                                <label class="form-label w-100">Is Favorite </label>
+                                <label class="form-label w-100">Is Favorite</label>
                                 <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
                                         <input type="radio" name="is_favorite" value="1" class="selectgroup-input"

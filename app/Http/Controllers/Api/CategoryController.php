@@ -8,14 +8,14 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    //index api
+    // index api
     public function index()
     {
-        //get all Category
+        // get all categories
         $categories = Category::all();
         return response()->json([
-           'status' =>'success',
-            'data' => $categories,
+            'status' => 'success',
+            'data' => $categories
         ], 200);
     }
 }

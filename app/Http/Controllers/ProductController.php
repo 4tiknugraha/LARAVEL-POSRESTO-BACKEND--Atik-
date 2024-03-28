@@ -13,6 +13,7 @@ class ProductController extends Controller
     {
         $products = Product::paginate(10);
         return view('pages.products.index', compact('products'));
+
     }
 
     // create
@@ -46,7 +47,6 @@ class ProductController extends Controller
         $product->stock = $request->stock;
         $product->status = $request->status;
         $product->is_favorite = $request->is_favorite;
-
         $product->save();
 
         //save image
@@ -56,7 +56,6 @@ class ProductController extends Controller
             $product->image = 'storage/products/' . $product->id . '.' . $image->getClientOriginalExtension();
             $product->save();
         }
-
         return redirect()->route('products.index')->with('success', 'Product created successfully');
     }
 
@@ -106,7 +105,6 @@ class ProductController extends Controller
             $product->image = 'storage/products/' . $product->id . '.' . $image->getClientOriginalExtension();
             $product->save();
         }
-
         return redirect()->route('products.index')->with('success', 'Product updated successfully');
     }
 
@@ -116,7 +114,6 @@ class ProductController extends Controller
         // delete the request...
         $product = Product::find($id);
         $product->delete();
-
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
 }

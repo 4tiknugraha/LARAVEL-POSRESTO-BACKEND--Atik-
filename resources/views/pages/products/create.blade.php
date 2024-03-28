@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Products Create')
+@section('title', 'Product Create')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -16,17 +16,16 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Advanced Forms</h1>
+                <h1>Product Forms</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
-                    <div class="breadcrumb-item">Products</div>
+                    <div class="breadcrumb-item">Product</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Products</h2>
-
+                <h2 class="section-title">Product</h2>
 
 
                 <div class="card">
@@ -56,7 +55,7 @@
                                 is-invalid
                             @enderror"
                                     name="description">
-                                @error('description')
+                                @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -90,10 +89,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label w-100">Category</label>
+                                <label class="form-label">Category</label>
                                 <select class="form-control selectric @error('category_id') is-invalid @enderror"
                                     name="category_id">
-                                    <option value="">Select Category</option>
+                                    <option value="">Choose Category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -101,9 +100,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Photo Products</label>
-                                <div class="col-sm-9 p-0">
-                                    <input type="file" class="form-control " name="image"
+                                <label class="form-label">Photo Product</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" name="image"
                                         @error('image') is-invalid @enderror>
                                 </div>
                                 @error('image')
@@ -114,8 +113,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label w-100">Status</label>
-                                <div class="selectgroup selectgroup-pill">
+                                <label class="form-label">Status</label>
+                                <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
                                         <input type="radio" name="status" value="1" class="selectgroup-input"
                                             checked="">
@@ -130,8 +129,8 @@
 
                             {{-- is favorite --}}
                             <div class="form-group">
-                                <label class="form-label w-100">Is favorite</label>
-                                <div class="selectgroup selectgroup-pill">
+                                <label class="form-label">Is Favorite</label>
+                                <div class="selectgroup selectgroup-pills">
                                     <label class="selectgroup-item">
                                         <input type="radio" name="is_favorite" value="1" class="selectgroup-input"
                                             checked="">
@@ -144,9 +143,11 @@
                                 </div>
                             </div>
 
-                            <div class="card-footer text-right">
-                                <button class="btn btn-primary">Submit</button>
-                            </div>
+
+                        </div>
+                        <div class="card-footer text-right">
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
                     </form>
                 </div>
 

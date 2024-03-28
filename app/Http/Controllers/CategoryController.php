@@ -64,6 +64,7 @@ class CategoryController extends Controller
         //validate the request...
         $request->validate([
             'name' => 'required',
+            'description' => 'required',
             // 'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -71,6 +72,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $request->name;
         $category->description = $request->description;
+        $category->save();
 
         //save image
         if ($request->hasFile('image')) {
